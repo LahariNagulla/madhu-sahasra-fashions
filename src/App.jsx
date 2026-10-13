@@ -428,6 +428,7 @@ function Storefront() {
   const [wishlist, setWishlist] = useState([]);
   const [selected, setSelected] = useState(null);
   const [cartOpen, setCartOpen] = useState(false);
+const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const categories = ["All", "Sarees", "Half Sarees", "Dresses", "Jewellery"];
   const availableTypes = useMemo(() => {
@@ -754,12 +755,146 @@ function Storefront() {
                     </div>
                   ))}
                 </div>
-                <div className="cart-summary"><div><span>Subtotal</span><strong>{formatPrice(cartTotal)}</strong></div><small>Shipping and taxes calculated at checkout.</small><button className="primary-btn" onClick={() => alert("Checkout is not connected yet. Add a secure payment and order backend before accepting real orders.")} type="button">Continue to checkout <ArrowRight size={17} /></button><button className="text-btn" onClick={() => setCartOpen(false)} type="button">Continue shopping</button></div>
+                <div className="cart-summary"><div>
+  <span>Subtotal</span><strong>{formatPrice(cartTotal)}</strong></div>
+  <small>Shipping and taxes calculated at checkout.</small>
+  <button
+  className="primary-btn"
+  onClick={() => {
+    setCartOpen(false);
+    setCheckoutOpen(true);
+  }}
+  type="button"
+>
+  Continue to checkout <ArrowRight size={17} />
+</button></div>
               </>
             )}
           </motion.aside>
         </motion.div>
       )}
+{checkoutOpen && (
+  <motion.div
+    className="checkout-backdrop"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    onClick={() => setCheckoutOpen(false)}
+  >
+    <motion.section
+      className="checkout-panel"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="checkout-header">
+        <div>
+          <span className="eyebrow">MADHU SAHASRA FASHIONS</span>
+          <h2>Your Order Summary</h2>
+          <p>Review your selected products and bill.</p>
+        </div>
+
+        <button
+          className="checkout-close"
+          onClick={() => setCheckoutOpen(false)}
+          type="button"
+          aria-label="Close checkout"
+        >
+          <X />
+        </button>
+      </div>
+
+      <div className="checkout-layout">
+        <div className="checkout-products">
+          <h3>Selected Products ({cartCount} items)</h3>
+
+          {cart.map((item) => (
+            <div className="checkout-product" key={item.id}>
+              <img src={item.image} alt={item.name} />
+
+              <div className="checkout-product-info">
+                <span>{item.category}</span>
+                <h4>{item.name}</h4>
+                <p>{item.color}</p>
+
+                <div className="checkout-quantity">
+                  <button
+                    onClick={() => changeQuantity(item.id, -1)}
+                    type="button"
+                  >
+                    <Minus size={14} />
+                  </button>
+
+                  <span>{item.quantity}</span>
+
+                  <button
+                    onClick={() => changeQuantity(item.id, 1)}
+                    type="button"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              </div>
+
+              <strong className="checkout-line-total">
+                {formatPrice(item.price * item.quantity)}
+              </strong>
+            </div>
+          ))}
+        </div>
+
+        <aside className="checkout-bill">
+          <span className="eyebrow">BILL DETAILS</span>
+          <h3>Price Summary</h3>
+
+          <div className="bill-row">
+            <span>Total products</span>
+            <strong>{cartCount}</strong>
+          </div>
+
+          <div className="bill-row">
+            <span>Subtotal</span>
+            <strong>{formatPrice(cartTotal)}</strong>
+          </div>
+
+          <div className="bill-row">
+            <span>Delivery charge</span>
+            <strong>{formatPrice(0)}</strong>
+          </div>
+
+          <div className="bill-total">
+            <span>Grand Total</span>
+            <strong>{formatPrice(cartTotal)}</strong>
+          </div>
+
+          <p className="checkout-demo-note">
+            This is a bill preview only. No payment will be collected.
+          </p>
+
+          <button
+            className="primary-btn checkout-print-btn"
+            onClick={() => window.print()}
+            type="button"
+          >
+            Print Bill
+          </button>
+
+          <button
+            className="text-btn checkout-back-btn"
+            onClick={() => {
+              setCheckoutOpen(false);
+              setCartOpen(true);
+            }}
+            type="button"
+          >
+            Back to shopping bag
+          </button>
+        </aside>
+      </div>
+    </motion.section>
+  </motion.div>
+)}
+
+
     </div>
   );
 }
