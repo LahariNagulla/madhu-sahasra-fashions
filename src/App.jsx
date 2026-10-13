@@ -752,6 +752,8 @@ function Storefront() {
     </div>
   );
 }
+
+
 export default function App() {
   const path = window.location.pathname;
 
