@@ -315,3 +315,36 @@
   }
 }
 
+
+/* Hero heading - improved contrast */
+.hero-title {
+  color: #2B1714;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+
+/* HERO TEXT COLORS */
+
+/* Hero eyebrow */
+.hero-copy .eyebrow {
+  color: #79613B !important;
+}
+
+/* Main heading */
+.hero-copy h1 {
+  color: #2B1714 !important;
+}
+
+/* Highlighted heading */
+.hero-copy h1 em {
+  color: #94651F !important;
+  font-style: normal;
+}
+
+/* Description */
+.hero-copy p {
+  color: #55413A !important;
+}

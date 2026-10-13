@@ -3815,3 +3815,196 @@ iframe {
     animation: none !important;
   }
 }
+
+/* FINAL HERO TEXT COLOR FIX */
+.store .hero .hero-copy .eyebrow {
+  color: #72552E !important;
+}
+
+.store .hero .hero-copy h1 {
+  color: #2B1714 !important;
+}
+
+.store .hero .hero-copy h1 em {
+  color: hwb(357 11% 51%) !important;
+  font-style: normal !important;
+}
+
+.store .hero .hero-copy > p {
+  color: hwb(342 29% 11%) !important;
+}
+
+/* ===== WEBSITE FONT SIZE UPGRADE ===== */
+
+/* Navbar links */
+.store .navbar a,
+.store .navbar button,
+.store header nav a,
+.store header nav button {
+  font-size: 15px !important;
+}
+
+/* Logo / brand name */
+.store .logo,
+.store .brand-name,
+.store header .logo {
+  font-size: 23px !important;
+}
+
+/* Hero main heading */
+.store .hero .hero-copy h1 {
+  font-size: clamp(42px, 4.2vw, 64px) !important;
+  line-height: 1.15 !important;
+}
+
+/* All section headings */
+.store h2 {
+  font-size: clamp(30px, 3vw, 44px) !important;
+  line-height: 1.1 !important;
+}
+
+/* Smaller headings and product names */
+.store h3 {
+  font-size: 21px !important;
+  line-height: 1.35 !important;
+}
+
+/* Paragraphs and descriptions */
+.store p {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+}
+
+/* Eyebrow / small section labels */
+.store .eyebrow {
+  font-size: 13px !important;
+  letter-spacing: 2px !important;
+}
+
+/* Buttons */
+.store button,
+.store .primary-btn,
+.store .text-btn {
+  font-size: 16px !important;
+}
+
+/* Product prices */
+.store .price,
+.store .product-price {
+  font-size: 18px !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .store .hero .hero-copy h1 {
+    font-size: clamp(36px, 9vw, 48px) !important;
+  }
+
+  .store h2 {
+    font-size: clamp(25px, 6vw, 33px) !important;
+  }
+
+  .store h3 {
+    font-size: 18px !important;
+  }
+
+  .store p {
+    font-size: 15px !important;
+  }
+
+  .store .navbar a,
+  .store .navbar button,
+  .store header nav a,
+  .store header nav button {
+    font-size: 15px !important;
+  }
+}
+
+
+/* DESKTOP: Enable homepage 3D saree animation */
+@media (min-width: 761px) {
+  .hero-art {
+    perspective: 1600px !important;
+    transform-style: preserve-3d !important;
+    overflow: visible !important;
+  }
+
+  .hero-art .hero-photo-back {
+    display: block !important;
+    animation: aaranya-saree-full-rotation 7s ease-in-out infinite !important;
+    transform-style: preserve-3d !important;
+    will-change: transform;
+  }
+
+  /* Our Story image animation */
+  .story-image img,
+  .story-image-animated .story-woman-photo {
+    animation: aaranya-story-portrait 8s ease-in-out infinite !important;
+    will-change: transform;
+  }
+}
+
+@keyframes aaranya-story-portrait {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-3deg) scale(1);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(3deg) scale(1.035);
+  }
+}
+
+/* HOMEPAGE SAREE — DESKTOP 3D ROTATION */
+@media (min-width: 761px) {
+  .store .hero .hero-art {
+    perspective: 1400px !important;
+    transform-style: preserve-3d !important;
+    overflow: visible !important;
+  }
+
+  .store .hero .hero-art .hero-photo-back {
+    display: block !important;
+    animation: homepage-saree-3d 7s ease-in-out infinite !important;
+    transform-origin: center center !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: visible !important;
+    will-change: transform;
+  }
+}
+
+@keyframes homepage-saree-3d {
+  0%, 100% {
+    transform: perspective(1400px) rotateY(-12deg) rotateX(2deg) translateY(0);
+  }
+
+  50% {
+    transform: perspective(1400px) rotateY(12deg) rotateX(-2deg) translateY(-8px);
+  }
+}
+
+/* HOMEPAGE SAREE — DESKTOP 3D ROTATION */
+@media (min-width: 761px) {
+  .store .hero .hero-art {
+    perspective: 1400px !important;
+    transform-style: preserve-3d !important;
+    overflow: visible !important;
+  }
+
+  .store .hero .hero-art .hero-photo-back {
+    display: block !important;
+    animation: homepage-saree-3d 7s ease-in-out infinite !important;
+    transform-origin: center center !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: visible !important;
+    will-change: transform;
+  }
+}
+
+@keyframes homepage-saree-3d {
+  0%, 100% {
+    transform: perspective(1400px) rotateY(-12deg) rotateX(2deg) translateY(0);
+  }
+
+  50% {
+    transform: perspective(1400px) rotateY(12deg) rotateX(-2deg) translateY(-8px);
+  }
+}

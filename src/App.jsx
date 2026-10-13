@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import AdminLogin from "./AdminLogin.jsx";
+
 import { motion, useReducedMotion } from "motion/react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Environment, Float } from "@react-three/drei";
@@ -37,6 +38,7 @@ import cropTopCasual from "./assets/crop-top-casual-02.jpg";
 import chudidarClassic from "./assets/chudidar-classic-01.jpg";
 import chudidarEmbroidered from "./assets/chudidar-embroidered-02.jpg";
 import "./index.css";
+import "./App.css";
 const sareeHeroImage = ourStoryWomanImage;
 const products = [
   {
@@ -498,7 +500,7 @@ function Storefront() {
   return (
     <div className="store">
       <div className="announcement">
-        <Sparkles size={14} /> A little luxury, made for your moments <span>✦</span> Discover the new collection
+        <Sparkles size={20} /> A little luxury, made for your moments <span>✦</span> Discover the new collection
       </div>
       <motion.header
         className="site-header"
@@ -546,8 +548,17 @@ function Storefront() {
         <motion.section className="hero" id="home" initial="hidden" animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.12 } } }}>
           <motion.div className="hero-copy" variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { ...revealTransition, duration: 0.75 } } }}>
             <span className="eyebrow"><span className="eyebrow-line" /> THE ART OF INDIAN ELEGANCE</span>
-            <h1>Tradition, women<br />with <em>modern grace.</em></h1>
-            <p>Discover beautiful sarees and thoughtfully chosen jewellery for every celebration, every ritual, and every little moment.</p>
+            
+<h1 className="hero-title">
+  Tradition, women<br />
+  with <em>modern grace.</em>
+</h1>
+
+<p className="hero-description">
+  Discover beautiful sarees and thoughtfully chosen jewellery for every
+  celebration, every ritual, and every little moment.
+</p>
+
             <div className="hero-actions">
               <button className="primary-btn" onClick={() => chooseCategory("Sarees")} type="button">Explore Sarees <ArrowRight size={17} /></button>
               <button className="text-btn" onClick={() => chooseCategory("Jewellery")} type="button">Shop Jewellery</button>
